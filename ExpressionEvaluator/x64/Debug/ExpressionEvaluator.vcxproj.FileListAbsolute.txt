@@ -1,2 +1,0 @@
-C:\Users\bayog\Desktop\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.exe
-C:\Users\bayog\Desktop\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.pdb
