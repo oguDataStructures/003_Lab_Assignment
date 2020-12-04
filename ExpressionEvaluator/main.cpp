@@ -18,19 +18,19 @@ int main() {
 
     printf("======================= TEST1 ========================\n");
     grade += Test1();
-    //if (grade > 0) {
-    //    printf("======================= TEST2 ========================\n");
-    //    grade += Test2();
+    if (grade > 0) {
+        printf("======================= TEST2 ========================\n");
+        grade += Test2();
 
-    //    printf("======================= TEST3 ========================\n");
-    //    grade += Test3();
+        printf("======================= TEST3 ========================\n");
+        grade += Test3();
 
-    //    printf("======================= TEST4 ========================\n");
-    //    grade += Test4();
+        printf("======================= TEST4 ========================\n");
+        grade += Test4();
 
-    //    printf("======================= TEST5 ========================\n");
-    //    grade += Test5();
-    //} //end-if
+        printf("======================= TEST5 ========================\n");
+        grade += Test5();
+    } //end-if
 
     printf("------------------------------------------------------\n");
     printf("Final grade: %d\n" + grade);
@@ -59,6 +59,7 @@ int Test2() {
 
     string infixExpr = "20 + 2 * 3     + (2*8 + 5)* 4";
     string postfixExpr = Infix2Postfix(infixExpr);
+    cout << "Yasemin: " << postfixExpr << endl;
     printf("Infix Expr: <%s>\nPostfixExpr: <%s>\n", infixExpr.c_str(), postfixExpr.c_str());
 
     int result = EvaluatePostfixExpression(postfixExpr);

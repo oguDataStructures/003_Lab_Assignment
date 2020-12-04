@@ -1,4 +1,4 @@
-#include <string>
+﻿#include <string>
 #include<stack>
 #include<iostream>
 #include<sstream>
@@ -9,44 +9,50 @@ using namespace std;
 /// 
 string Infix2Postfix(string& s) {
 	// Fill this in
-	s.erase(remove(s.begin(), s.end(), ' '), s.end());
+	s.erase(remove(s.begin(), s.end(), ' '), s.end()); //remove spaces
 
 	string const delims = "-+/*";
-	size_t beg, pos = 0;
+	size_t nMatchedPos, pos = 0;
 	stack<char> S;
 	int i = 0;
 	int weight[100] = { -1 };
 	int flag = 0;
 	string result;
-	while ((beg = s.find_first_not_of(delims, pos)) != string::npos) {
-		pos = s.find_first_of(delims, beg + 1);
-		string stringNumber = s.substr(beg, pos - beg);
-		if (s[beg] == '(') {
-			S.push(s[beg]);
-			stringNumber = s.substr(beg + 1, pos - beg - 1);
-			result += stringNumber;
+	while ((nMatchedPos = s.find_first_not_of(delims, pos)) != string::npos) { //Find non-matching character in string from the end and return position of character
+
+		pos = s.find_first_of(delims, nMatchedPos + 1);//s.find_first_of(delims, pos) finds the first occurrence of one of the characters in delims
+		string stringNumber = s.substr(nMatchedPos, pos - nMatchedPos);//Substract characters starting by  un-matched character (2) to matched character (+) in s string
+
+		if (s[nMatchedPos] == '(') {
+			S.push(s[nMatchedPos]);
+			stringNumber = s.substr(nMatchedPos + 1, pos - nMatchedPos - 1);
+			result = result + " " + stringNumber;
 			flag = 1;
 		}
-		else if (s[beg + 1] == ')') {
-			result += s[beg];
+		else if (s[nMatchedPos + 1] == ')') {
+			result = result +" "+ s[nMatchedPos];
 			while (S.top() != '(') {
-				result += S.top();
+				result = result + " " + S.top();
 				S.pop();
 			}
 			S.pop();
 			flag = 1;
 		}
 		else {
-			result += stringNumber;
+			result = result +" "+ stringNumber;
 		}
 		if (pos < s.length()) {
 			switch (s[pos])
 			{
 			case '+':
+				weight[i] = 1;
+				break;
 			case '-':
 				weight[i] = 1;
 				break;
 			case '*':
+				weight[i] = 2;
+				break;
 			case '/':
 				weight[i] = 2;
 				break;
@@ -59,20 +65,20 @@ string Infix2Postfix(string& s) {
 			if (s[pos])
 			{
 				int k = i;
-				while (!S.empty() && S.top() != '(' && i > 0 && weight[i - 1] > weight[i])
+				while (!S.empty() && S.top() != '(' && i > 0 && weight[i - 1] >= weight[i])
 				{
-					result += S.top();
+					result = result +" "+ S.top();
 					S.pop();
-					weight[k] = 0;
-					k--;
+					//weight[k] = 0;
+					k--;//k azaltmak ne işe yarıyor
 				}
 				S.push(s[pos]);
 			}
-			i++;
+			i++;//Ne işe yarıyor?
 		}
 		else {
 			while (!S.empty()) {
-				result += S.top();
+				result = result + " " + S.top();
 				S.pop();
 			}
 		}
@@ -80,9 +86,6 @@ string Infix2Postfix(string& s) {
 		// If character is operator, pop two elements from stack, perform operation and push the result back.
 
 	}
-
-
-
 	return result;
 } // end-Infix2Postfix
 
@@ -96,7 +99,6 @@ int EvaluatePostfixExpression(string& s) {
 	while (getline(ss, stringNumber, ' '))
 	{
 		if (stringNumber == "") continue;
-		cout << stringNumber << "" << endl;
 		if (stringNumber != "*" && stringNumber != "/" && stringNumber != "+" && stringNumber != "-") {
 			k.push(stringNumber);
 		}
@@ -143,12 +145,10 @@ int EvaluatePostfixExpression(string& s) {
 			{
 				num2 -= num1;
 				k.push(to_string(num2));
+				continue;
 			}
-			else
-			{
-				num1 -= num2;
-				k.push(to_string(num1));
-			}
+			num2 -= num1;
+			k.push(to_string(num2));
 		}
 
 	}
@@ -160,7 +160,7 @@ int EvaluatePostfixExpression(string& s) {
 
 } // end-EvaluatePostfixExpression
 /*
-	s.erase(remove(s.begin(), s.end(), ' '), s.end());
+	s.erase(remove(s.nMatchedPosin(), s.end(), ' '), s.end());
 	stack<char> k;
 	k.push('0');
 	int i = 0;
