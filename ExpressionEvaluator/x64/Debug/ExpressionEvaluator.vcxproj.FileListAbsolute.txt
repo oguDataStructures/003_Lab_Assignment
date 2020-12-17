@@ -2,3 +2,5 @@ C:\Users\bayog\Desktop\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.exe
 C:\Users\bayog\Desktop\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.pdb
 C:\Users\yasem\OneDrive\Masaüstü\003_Lab_Assignment\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.exe
 C:\Users\yasem\OneDrive\Masaüstü\003_Lab_Assignment\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.pdb
+D:\Data_Sturucture_Fall_2021\003_Lab_Assignment\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.exe
+D:\Data_Sturucture_Fall_2021\003_Lab_Assignment\ExpressionEvaluator\x64\Debug\ExpressionEvaluator.pdb
